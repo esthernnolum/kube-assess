@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webservice1-ingress
+spec:
+  rules:
+  - host: esther.com   # Replace with your domain or IP address
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webservice1-service
+            port:
+              number: 80
