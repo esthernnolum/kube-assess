@@ -38,7 +38,7 @@ metadata:
   name: webservice2-ingress
 spec:
   rules:
-  - host: esther.com 
+  - host: esther.local 
     http:
       paths:
       - path: /subdomain1
@@ -51,8 +51,8 @@ spec:
         tls:
           # Configure TLS/SSL settings if needed
           - hosts:
-            - esther.com
-            secretName: your-tls-secret 
+            - esther.local
+            secretName: kube-secret 
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -61,7 +61,7 @@ metadata:
   name: webservice2-ingress-no-auth
 spec:
   rules:
-  - host: esther.com  
+  - host: esther.local  
     http:
       paths:
       - path: /subdomain2

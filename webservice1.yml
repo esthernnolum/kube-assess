@@ -4,7 +4,7 @@ metadata:
   name: webservice1-ingress
 spec:
   rules:
-  - host: esther.com   # Replace with your domain or IP address
+  - host: esther.local   # Replace with your domain or IP address
     http:
       paths:
       - path: /
