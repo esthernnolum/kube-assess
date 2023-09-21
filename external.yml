@@ -4,7 +4,7 @@ metadata:
   name: webservice1-service
 spec:
   selector:
-    app.kubernetes.io/name: MyApp
+    app.kubernetes.io/name: webservice1
   ports:
     - name: http
       protocol: TCP
