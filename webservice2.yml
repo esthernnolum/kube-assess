@@ -47,10 +47,8 @@ spec:
       - path: /subdomain1
         pathType: Prefix
         backend:
-          service:
-            name: webservice2-service
-            port:
-              number: 80
+          serviceName: webservice2-service
+          servicePort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -64,7 +62,5 @@ spec:
       - path: /subdomain2
         pathType: Prefix
         backend:
-          service:
-            name: webservice2-service
-            port:
-              number: 80
+          serviceName: webservice2-service
+          servicePort: 80
