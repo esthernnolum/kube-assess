@@ -4,7 +4,7 @@ metadata:
   name: webservice1-ingress
 spec:
   rules:
-  - host: 192.168.49.1 
+  - host: 192.168.49.1   #replace with domein/IP
     http:
       paths:
       - path: /

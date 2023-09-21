@@ -29,7 +29,6 @@ spec:
                 name: kube-secret
                 key: password
 
-
 ---
 apiVersion: v1
 kind: Service
@@ -50,7 +49,7 @@ metadata:
   name: webservice2-subdomain1
 spec:
   rules:
-  - host: 192.168.49.1 
+  - host: 192.168.49.1     #replace with domein/IP
     http:
       paths:
       - path: /subdomain1
@@ -73,7 +72,7 @@ metadata:
   name: webservice2-subdomain2-no-auth
 spec:
   rules:
-  - host: 192.168.49.1  
+  - host: 192.168.49.1   #replace with domein/IP
     http:
       paths:
       - path: /subdomain2
