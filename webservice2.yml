@@ -17,17 +17,6 @@ spec:
         image: webservice2 
         ports:
         - containerPort: 80
-        env:
-          - name: AUTH_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: kube-secret
-                key: username
-          - name: AUTH_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: kube-secret
-                key: password
 
 ---
 apiVersion: v1
@@ -47,6 +36,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: webservice2-subdomain1
+  annotations:
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: kube-secret
 spec:
   rules:
   - host: 192.168.49.1     #replace with domein/IP
@@ -59,12 +51,6 @@ spec:
             name: webservice2-service
             port:
               number: 80
-        tls:
-          # Configure TLS/SSL settings if needed
-          - hosts:
-            - 192.168.49.1
-            secretName: kube-secret 
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

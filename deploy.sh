@@ -13,4 +13,4 @@ kubectl apply -f kube-secret.yml
 kubectl apply -f webservice2.yml
 kubectl rollout status deployment/webservice2-deploy
 # Add Ingress host to /etc/hosts
-echo "$(minikube ip) webservice2.local" | sudo tee -a /etc/hosts
+echo "$(minikube ip) webservice2" | sudo tee -a /etc/hosts
