@@ -14,9 +14,10 @@ spec:
     spec:
       containers:
       - name: webservice2
-        image: webservice2 
+        image: webservice2
+        imagePullPolicy: Never
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 
 ---
 apiVersion: v1
@@ -29,26 +30,28 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 80
-
+    targetPort: 8080
+  type: LoadBalancer
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webservice2-subdomain1
+  name: webservice1-subdomain1
   annotations:
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: kube-secret
 spec:
   rules:
-  - host: 192.168.49.1     #replace with domein/IP
+  - host: subdomain1.webservice.com     #replace with domein/IP
     http:
       paths:
-      - path: /subdomain1
+      - path: / 
         pathType: Prefix
         backend:
-          serviceName: webservice2-service
-          servicePort: 80
+          service:
+            name: webservice1-service
+            port:
+              number: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -56,11 +59,13 @@ metadata:
   name: webservice2-subdomain2-no-auth
 spec:
   rules:
-  - host: 192.168.49.1   #replace with domein/IP
+  - host: subdomain2.webservice.com  #replace with domein/IP
     http:
       paths:
-      - path: /subdomain2
+      - path: /
         pathType: Prefix
         backend:
-          serviceName: webservice2-service
-          servicePort: 80
+          service:
+            name: webservice2-service
+            port:
+              number: 80
