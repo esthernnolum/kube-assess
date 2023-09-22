@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webservice1-subdomain1-no-auth
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: subdomain1.webservice.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webservice1-service
+                port:
+                  number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webservice2-subdomain2
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: subdomain2.webservice.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webservice2-service
+                port:
+                  number: 8081
