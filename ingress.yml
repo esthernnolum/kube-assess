@@ -1,13 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webservice1-subdomain1
+  name: webservice1-ingress
   annotations:
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: basic-auth
     nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - esther'
 spec:
-  ingressClassName: nginx
   rules:
     - host: subdomain1.webservice.com
       http:
@@ -23,9 +22,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webservice2-subdomain2
+  name: webservice2-ingress
 spec:
-  ingressClassName: nginx
   rules:
     - host: subdomain2.webservice.com
       http:

@@ -4,8 +4,4 @@ metadata:
   name: webservice1-service
 spec:
   type: ExternalName
-  externalName: subdomain1.webservice.com
-  ports:
-    - name: http
-      protocol: TCP
-      port: 8080
+  externalName: subdomain1.test.com

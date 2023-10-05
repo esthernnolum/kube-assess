@@ -13,7 +13,7 @@ COPY app.py .
 RUN pip install Flask
 
 # Expose the port that the application will listen on
-EXPOSE 8080
+EXPOSE 5000
 
 # Command to run the application
 CMD ["python", "app.py"]
